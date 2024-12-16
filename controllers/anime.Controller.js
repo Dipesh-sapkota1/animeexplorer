@@ -4,14 +4,6 @@ import axios from 'axios';
 const URL = process.env.API_URI;
 
 
-
-try {
-	const response = await axios.request(options);
-	console.log(response.data);
-} catch (error) {
-	console.error(error);
-}
-
  export const getAnimes = async (req, res) => {
   try {
        const popular = await axios.get(`${URL}/top/anime?filter=bypopularity`);
