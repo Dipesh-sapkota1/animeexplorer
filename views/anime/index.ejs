@@ -23,12 +23,14 @@
       </a>
       <!-- NavItems -->
       <ul class="flex gap-5 items-center relative ">
-        <div class="search relative active overflow-hidden">
-            <input type="text" class="input" placeholder="search" id="search">
-            <button class="btn">
+        <!-- <div class="search relative active overflow-hidden"> -->
+           <form action="/anime/results" method="POST" class="search relative active overflow-hidden">
+            <input type="text" class="input" placeholder="search" id="search" name="search">
+            <button class="btn" type="submit">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
-        </div>
+           </form>
+        <!-- </div> -->
           <!-- Result container -->
           <ul id="results" class="hidden absolute overflow-x-hidden overflow-y-scroll max-h-[300px] top-10 z-50 left-0 w-[300px] bg-background-400 rounded-b-md">
               <div class="spinner active"></div>
@@ -38,19 +40,11 @@
         <li class="relative">
           <a href="#"  class="text-text group hover:text-accent" id="genre">Genres</a>
             <ul class="hidden absolute right-[-40px] bg-background-800  space-y-3 z-[100] rounded-b-lg text-text" name="genre" id="genre-list">
-              <!-- <li class="w-full p-3 hover:bg-background-400">
-                <button class="genreButton" data-genre="Action">Action</button>
-              </li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Horror">Horror</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Adventure">Adventure</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Comedy">Comedy</button></li>
-              <li class="w-full p-3 hover:bg-background-400">
-                <button class="genreButton" data-genre="Sci-Fi">Sci-Fi</button>
-              </li> -->
-
               <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Action">Action</a></li>
               <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Horror">Horror</a></li>
               <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Comedy">Comedy</a></li>
+              <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Adventure">Adventure</a></li>
+              <li class="w-full p-3 hover:bg-background-400 rounded-b-lg"> <a href="/anime/search?genre=Sci-Fi">Sci-Fi</a></li>
               </ul>
         </li>
       </ul>
@@ -79,13 +73,9 @@
                     <img src="<%=anime.node.main_picture.medium%>" alt="<%=anime.node.title%>" class="card-image">
                     <div class="card-info">
                       <div class="episode">
-                        <%# if(anime.episodes) {%>
-                         EP: <%#anime.episodes %>
-                       <%# }else{ %>
-                          ?
-                        <%# } %>
+                         EP: <%=anime.node.num_episodes %>
                       </div>
-                      <div class="type"><%#anime.type%></div>
+                      <div class="type"><%=anime.node.media_type%></div>
                     </div>
                     
                   </div>
@@ -94,23 +84,19 @@
                     <div class="overlay"></div>
                     <div class="card-details">
                       <p><%=anime.node.title%></p>
-                      <p>Other name: <%#anime.title%></p> 
-                      <p>Status: <%#anime.status%></p>
-                      <p>Date Aired: <%#anime.aired.string%></p>
+                      <p>Other title: <%=anime.node.alternative_titles.en%></p> 
+                      <p>Status: <%anime.node.status%></p>
+                      <p>Date Aired: <%=anime.node.start_date%></p>
                       <p>Genres:
-                        <%#anime.genres.forEach(genre =>{ %>
-                          <span><%#genre.name%>, </span>
-                      <%# })%>
+                        <% anime.node.genres.forEach(genre =>{ %>
+                          <span> <%=genre.name%>, </span>
+                      <% })%>
                         </p>
-                      <p>Score: <%#anime.score%></p>
+                      <p>Score: <%=anime.node.mean%></p>
                     </div>
                   </div>
                   <div class="card-title my-2">
-                    <% if(anime.title_english) {%>
-                      <%=anime.title_english%>
-                  <%  }else{ %>
-                      <%=anime.node.title%>
-                  <% } %>  
+                    <%=anime.node.title%>
                   </div>
                 </div>
               </a>
@@ -130,8 +116,8 @@
             </div>
             <div class="col2 self-center  p-3">
               <a href="/anime/<%=anime.node.id %>">
-                <p class="text-text"><%=anime.node.title%></p>
-                <p class="text-text">Genre: <span class="text-primary"><%#anime.genres[0].name%></span></p>
+                <p class="text-text text-sm hover:text-accent"><%=anime.node.title%></p>
+                <p class="text-text">Genre: <span class="text-primary"><%=anime.node.genres[0].name%></span></p>
               </a>
             </div>
           </div>

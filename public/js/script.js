@@ -1,11 +1,13 @@
+  
 window.addEventListener('DOMContentLoaded',()=>{
   
-    const search = document.getElementById('search');
-    const result = document.getElementById('results');
-    const spinner = document.querySelector('.spinner');
-    const genres = document.querySelectorAll('.genreButton');
+  const search = document.getElementById('search');
+  const result = document.getElementById('results');
+  const spinner = document.querySelector('.spinner');
+  const genres = document.querySelectorAll('.genreButton');
+  
 
-    window.location.href = '';
+ 
     genres.forEach(button => {
       button.addEventListener('click', function() {
           const genre = this.getAttribute('data-genre');
@@ -21,19 +23,19 @@ window.addEventListener('DOMContentLoaded',()=>{
 
     search.addEventListener('input',(e)=>{
       const query = e.target.value.trim();
-      console.log(query);
       getResult(query);
       result.classList.remove('hidden');
     })
 
     const getResult  = async (query) => { 
+      
       try {
-        const response = await axios.get(`https://api.myanimelist.net/v2/anime?q=${query}`);
+        const response = await axios.get(`/anime/name?query=${query}`);
         spinner.classList.add('active');
-        const data = response.data.data;
+        const data = response.data;
+        console.log(data);
         spinner.classList.remove('active');
         displayResults(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -49,15 +51,15 @@ window.addEventListener('DOMContentLoaded',()=>{
           listItem.classList.add('border-2','border-text');
           listItem.innerHTML =  `
               <div class="flex h-[100px] gap-5 hover:scale-105">
-                      <div class="col1">
-                        <a href="/${item.mal_id}">
-                          <img src="${item.images.jpg.image_url}" class="size-full" alt="${item.title_english}">
+                      <div class="w-1/3">
+                        <a href="/anime/${item.node.id}">
+                          <img src="${item.node.main_picture.medium}" class="size-full" alt="${item.node.title}">
                         </a>
                       </div>
                       <div class="col2 self-center">
-                        <a href="/${item.mal_id}">
-                          <p class="text-text">${item.title_english}</p>
-                          <p class="text-text">Genre: <span class="text-primary">${item.genres[0].name}</span></p>
+                        <a href="/anime/${item.node.id}">
+                          <p class="text-text text-sm hover:text-accent">${item.node.title}</p>
+                          <p class="text-text">Genre: <span class="text-primary">${item.node.genres[0].name}</span></p>
                         </a>
                       </div>
                     </div>
