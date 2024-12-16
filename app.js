@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import { getAnimes } from './controllers/anime.Controller.js';
 import router from './routes/anime.Routes.js';
 import cors from 'cors';
 import path from 'path';
@@ -18,10 +19,8 @@ app.set('views', './views');
 // Set the static folder
 app.use(express.static(path.join(process.cwd(), 'public')));
 
-// Root route (optional)
-// app.get('/', (req, res) => {
-//   res.send('Hello, World!');
-// });
+// Root route
+app.get('/', getAnimes);
 
 // Routes
 app.use('/anime', router);
