@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-  <link rel="manifest" href="./site.webmanifest">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="module" src="js/script.js" defer></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <link href="/css/style.css" rel="stylesheet">
-  <title>Anime Explorer | Details</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="manifest" href="./site.webmanifest">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script type="module" src="/js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="/css/style.css" rel="stylesheet">
+    <title>Anime Explorer | Details</title>
+  </head>
 <body>
   <header class="relative bg-background-800">
     <nav class="container  mx-auto flex items-center justify-between py-4 px-8 lg:px-14 gap-4 ">
@@ -39,12 +39,12 @@
         <li class="relative">
           <a href="#"  class="text-text group hover:text-accent" id="genre">Genres</a>
             <ul class="hidden absolute right-[-40px] bg-background-800  space-y-3 z-[100] rounded-b-lg text-text" name="genre" id="genre-list">
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Action">Action</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Horror">Horror</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Adventure">Adventure</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Comedy">Comedy</button></li>
-              <li class="w-full p-3 hover:bg-background-400"><button class="genreButton" data-genre="Sci-Fi">Sci-Fi</button></li>
-              </ul>
+              <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Action">Action</a></li>
+              <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Horror">Horror</a></li>
+              <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Comedy">Comedy</a></li>
+              <li class="w-full p-3 hover:bg-background-400"> <a href="/anime/search?genre=Adventure">Adventure</a></li>
+              <li class="w-full p-3 hover:bg-background-400 rounded-b-lg"> <a href="/anime/search?genre=Sci-Fi">Sci-Fi</a></li>
+            </ul>
         </li>
       </ul>
     </nav>
