@@ -19,9 +19,9 @@ app.set('views', './views');
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Root route (optional)
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello, World!');
+// });
 
 // Routes
 app.use('/anime', router);
