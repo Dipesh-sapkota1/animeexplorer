@@ -59,7 +59,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <% popularAnimes.forEach(anime => {  %>
-          <div class="swiper-slide "><img src="<%=anime.images.jpg.large_image_url%>" alt=""></div>
+          <div class="swiper-slide "><img src="<%=anime.node.main_picture.large%>" alt=""></div>
           <% }) %>
         </div>
       </div>
@@ -73,43 +73,43 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center items-center p-10">
           <% currentAnimes.forEach(anime =>{ %>
              <div class="card-container">
-              <a href="/anime/<%=anime.mal_id%>">
+              <a href="/anime/<%=anime.node.id%>">
                 <div class="card">
                   <div class="card-front">
-                    <img src="<%=anime.images.jpg.large_image_url%>" alt="<%=anime.title_english%>" class="card-image">
+                    <img src="<%=anime.node.main_picture.medium%>" alt="<%=anime.node.title%>" class="card-image">
                     <div class="card-info">
                       <div class="episode">
-                        <% if(anime.episodes) {%>
-                         EP: <%=anime.episodes %>
-                       <% }else{ %>
+                        <%# if(anime.episodes) {%>
+                         EP: <%#anime.episodes %>
+                       <%# }else{ %>
                           ?
-                        <% } %>
+                        <%# } %>
                       </div>
-                      <div class="type"><%=anime.type%></div>
+                      <div class="type"><%#anime.type%></div>
                     </div>
                     
                   </div>
                   <div class="card-back">
-                    <img src="<%=anime.images.jpg.large_image_url%>" alt="<%=anime.title_english%>" class="card-image">
+                    <img src="<%=anime.node.main_picture.medium%>" alt="<%=anime.node.title%>" class="card-image">
                     <div class="overlay"></div>
                     <div class="card-details">
-                      <p><%=anime.title_english%></p>
-                      <p>Other name: <%=anime.title%></p>
-                      <p>Status: <%=anime.status%></p>
-                      <p>Date Aired: <%=anime.aired.string%></p>
+                      <p><%=anime.node.title%></p>
+                      <p>Other name: <%#anime.title%></p> 
+                      <p>Status: <%#anime.status%></p>
+                      <p>Date Aired: <%#anime.aired.string%></p>
                       <p>Genres:
-                        <%anime.genres.forEach(genre =>{ %>
-                          <span><%=genre.name%>, </span>
-                      <% })%>
+                        <%#anime.genres.forEach(genre =>{ %>
+                          <span><%#genre.name%>, </span>
+                      <%# })%>
                         </p>
-                      <p>Score: <%=anime.score%></p>
+                      <p>Score: <%#anime.score%></p>
                     </div>
                   </div>
                   <div class="card-title my-2">
                     <% if(anime.title_english) {%>
                       <%=anime.title_english%>
                   <%  }else{ %>
-                      <%=anime.title%>
+                      <%=anime.node.title%>
                   <% } %>  
                   </div>
                 </div>
@@ -124,14 +124,14 @@
           <% upcomingAnimes.forEach(anime=>{ %>
             <div class="flex h-[100px] gap-5 bg-background-800 rounded-xl hover:scale-105">
             <div class="col1 w-[200px]">
-              <a href="/anime/<%=anime.mal_id %>">
-                <img src="<%=anime.images.jpg.image_url%>" class="size-full object-cover rounded-xl" alt="<%=anime.title_english%>">
+              <a href="/anime/<%=anime.node.id %>">
+                <img src="<%=anime.node.main_picture.medium%>" class="size-full object-cover rounded-xl" alt="<%=anime.node.title%>">
               </a>
             </div>
             <div class="col2 self-center  p-3">
-              <a href="/anime/<%=anime.mal_id %>">
-                <p class="text-text"><%=anime.title_english%></p>
-                <p class="text-text">Genre: <span class="text-primary"><%=anime.genres[0].name%></span></p>
+              <a href="/anime/<%=anime.node.id %>">
+                <p class="text-text"><%=anime.node.title%></p>
+                <p class="text-text">Genre: <span class="text-primary"><%#anime.genres[0].name%></span></p>
               </a>
             </div>
           </div>

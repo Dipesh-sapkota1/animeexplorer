@@ -26,9 +26,9 @@ window.addEventListener('DOMContentLoaded',()=>{
       result.classList.remove('hidden');
     })
 
-    const getResult  = async (query) => {
+    const getResult  = async (query) => { 
       try {
-        const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}?search_query_sort=asc`);
+        const response = await axios.get(`https://api.myanimelist.net/v2/anime?q=${query}`);
         spinner.classList.add('active');
         const data = response.data.data;
         spinner.classList.remove('active');
