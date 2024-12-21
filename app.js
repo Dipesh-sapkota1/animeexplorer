@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import express from 'express';
-import { getAnimes } from './controllers/anime.Controller.js';
 import router from './routes/anime.Routes.js';
 import cors from 'cors';
 import path from 'path';
@@ -20,7 +19,7 @@ app.set('views', './views');
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Root route
-app.get('/', getAnimes);
+app.get('/', router);
 
 // Routes
 app.use('/anime', router);

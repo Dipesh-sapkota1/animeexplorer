@@ -1,7 +1,6 @@
-
 import axios from 'axios';
 import { config } from 'dotenv';
-import { urlencoded } from 'express';
+
 
 // Load environment variables
 config();
@@ -22,35 +21,33 @@ const option = {
  // Get multiple anime rankings
 export const getAnimes = async (req, res) => {
   try {
-   
     const [current, popular, upcoming] = await Promise.all([
       axios.get(`${URL}/ranking?ranking_type=airing`, option),
       axios.get(`${URL}/ranking?ranking_type=bypopularity`, option),
       axios.get(`${URL}/ranking?ranking_type=upcoming`, option)
     ]);
-
     const canime = current.data.data;
     const panime = popular.data.data;
     const uanime = upcoming.data.data;
-          
+
     res.render('anime/index.ejs', { popularAnimes: panime, currentAnimes: canime, upcomingAnimes: uanime });   
       
   } catch (error) {
+    res.render('anime/message.ejs', { error: error });
     console.error('Error in getAnimes:', error);
-    res.status(500).json({ error: error.message });
   };
  
 }
 export const getAnimeById = async (req, res) => {
 
   try {
-
     const response = await axios.get(`${URL}/${req.params.id}`,option); 
     const data = response.data;
     res.render("anime/details.ejs",{details:data}); 
   } catch (error) {
+    res.render('anime/message.ejs', { error: error });
     console.error('Error in getAnimes:', error);
-    res.status(500).json({ error: error.message });
+  
   }
 }
 
@@ -66,7 +63,7 @@ export const searchByGenre = async (req, res) => {
         );
       res.render("anime/results.ejs",{results:curGenre,genre:genre});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('anime/message.ejs', { error: error });
     console.error(error);
   }
 }
@@ -77,12 +74,10 @@ export const searchByName = async (req, res) => {
        const data = allAnime.data.data;
        res.json(data);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('anime/message.ejs', { error: error });
     console.error(error);
   }
 }
-
-
 
 
 export const searchToResult = async (req, res) => {
@@ -93,7 +88,7 @@ export const searchToResult = async (req, res) => {
        const data = allAnime.data.data;
       res.render("anime/results.ejs",{results:data,genre:name});
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.render('anime/message.ejs', { error: error });
     console.error(error);
   }
 }

@@ -15,7 +15,7 @@
     <link href="/css/style.css" rel="stylesheet">
     <title>Anime Explorer | Details</title>
   </head>
-<body>
+<body class="font-body">
   <header class="relative bg-background-800">
     <nav class="container  mx-auto flex items-center justify-between py-4 px-8 lg:px-14 gap-4 ">
       <a href="/anime">
@@ -65,7 +65,7 @@
           <img src="<%=details.main_picture.large%>" alt="<%=details.title%>" class=" object-cover">
         </div>
         <div class=" text-text md:w-1/2">
-          <h1 class="text-2xl  lg:text-3xl"><%=details.title%></h1>
+          <h1 class="text-2xl  lg:text-3xl font-heading"><%=details.title%></h1>
           <p class="text-2xl">Score: <span class="text-accent"><%=details.mean%></span></p>
           <p class="lg:text-lg">
             <%=details.synopsis%>
@@ -75,7 +75,7 @@
       </div>
       <!-- Bottom part -->
         <div class=" text-text ">
-          <h2 class="text-2xl lg:text-3xl">Information</h2>
+          <h2 class="text-2xl lg:text-3xl font-heading">Information</h2>
           <ul class="space-y-3">
             <li>
               <span class="text-accent">Type:</span> 
@@ -131,21 +131,20 @@
   </section>
  </main>
 
-  <footer class="p-10 md:p-20 bg-background-400 z-50">
-   <div class="flex justify-between">
-   <a href="/anime"><img src="/images/logo.png" class="w-52" alt="logo"></a>
-    <ul class="flex text-text text-2xl gap-2">
-      <li>
-       <a href="" class="hover:text-accent"> <i class="fab fa-instagram" aria-hidden="true"></i></a>
-      </li><li>
-       <a href="" class="hover:text-accent"> <i class="fab fa-discord" aria-hidden="true"></i></a>
-      </li><li>
-       <a href="" class="hover:text-accent"> <i class="fab fa-x" aria-hidden="true"></i></a>
-      </li>
-      
-    </ul>
-   </div>
-  </footer>
+ <footer class="p-10 md:p-20 bg-background-400">
+  <div class="flex justify-between">
+  <a href="/anime"><img src="/images/logo.png" class="w-[200px]" alt="logo"></a>
+   <ul class="flex text-text text-2xl gap-2">
+     <li>
+      <a href="https://instagram.com" class="hover:text-accent"> <i class="fab fa-instagram" aria-hidden="true"></i></a>
+     </li><li>
+      <a href="https://discord.com" class="hover:text-accent"> <i class="fab fa-discord" aria-hidden="true"></i></a>
+     </li><li>
+      <a href="https://twitter.com" class="hover:text-accent"> <i class="fab fa-x" aria-hidden="true"></i></a>
+     </li>
+   </ul>
+  </div>
+ </footer>
  
 </body>
 </html>

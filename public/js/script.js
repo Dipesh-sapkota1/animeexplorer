@@ -75,7 +75,17 @@ window.addEventListener('DOMContentLoaded',()=>{
     
         direction: 'horizontal',
         loop: true,
-        slidesPerView: 4,
+        slidesPerView: 1,
+        breakpoints: {
+        450: {
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        700: {
+          slidesPerView: 3,
+          spaceBetween: 10
+        },
+      }, 
         pagination: {
           el: '.swiper-pagination',
         },
